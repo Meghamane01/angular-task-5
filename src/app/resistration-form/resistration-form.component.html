@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <form [formGroup]="resisterUserForm" (ngSubmit)="resisterUser()">
+                <div class="form-check form-check-inline mt-5">
+                    <input class="form-check-input" type="radio" name="userHodOrStaff" id="inlineRadio1" value="HOD"
+                        formControlName="userHodOrStaff">
+                    <label class="form-check-label" for="inlineRadio1">Hod</label>
+                </div>
+                <div class="form-check form-check-inline ">
+                    <input class="form-check-input" type="radio" name="userHodOrStaff" id="inlineRadio2" value="Staff"
+                        formControlName="userHodOrStaff">
+                    <label class="form-check-label" for="inlineRadio2">Staff</label>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 mt-4">
+                        <label for="fName" class="mt-3">First Name</label>
+                        <input type="text" class="form-control mt-2" id="fName" formControlName="userFirstName">
+                        <small class="text-danger"
+                        *ngIf="!resisterUserForm.get('userFirstName').valid && resisterUserForm.get('userFirstName').touched"> first
+                        name is required</small>
+                    </div>
+                    <div class="col-sm-6 mt-4">
+                        <label for="lName" class="mt-3">Last Name</label>
+                        <input type="text" class="form-control mt-2" id="lName" formControlName="userLastName">
+                        <small class="text-danger"
+                        *ngIf="!resisterUserForm.get('userLastName').valid && resisterUserForm.get('userLastName').touched"> last
+                        name is required</small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="email" class="mt-3">Email</label>
+                        <input type="text" class="form-control mt-2" id="email" formControlName="userEmail">
+                        <small class="text-danger" *ngIf="!resisterUserForm.get('userEmail').valid &&
+                        resisterUserForm.get('userEmail').touched">
+        <ng-container *ngIf=" resisterUserForm.get('userEmail').errors?.required"> Email is  required</ng-container>
+        <ng-container *ngIf=" resisterUserForm.get('userEmail').errors?.uniqueEmail">This Email is aleready withus | Please try another email</ng-container>
+    </small>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="contact" class="mt-3">Contact</label>
+                        <input type="text" class="form-control mt-2" id="contact" formControlName="usercontact">
+                        <small class="text-danger"
+                        *ngIf="!resisterUserForm.get('usercontact').valid && resisterUserForm.get('usercontact').touched"> Contact
+                        number is required</small>
+                    </div>
+                </div>
+                <div class="row mt-4 pb-5">
+                    <div class="form-group col-6">
+                        <select class="custom-select" formControlName="userDep">
+                            <option disabled [selected]="true">sales</option>
+                            <option value="Phone Number" name="phone">Civil</option>
+                            <option value="Email Address" name="email">IT</option>
+                            <option value="Email Address" name="email">Mech</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label for="username">UserName</label>
+                        <input type="text" class="form-control" id="username" formControlName="userName">
+                        <small class="text-danger"
+                        *ngIf="!resisterUserForm.get('userName').valid && resisterUserForm.get('userName').touched"> User
+                        name is required</small>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="upassword">Password</label>
+                        <input type="text" class="form-control" id="upassword" formControlName="uPsw">
+                        <small class="text-danger"
+                        *ngIf="!resisterUserForm.get('uPsw').valid && resisterUserForm.get('uPsw').touched">Password
+                        name is required</small>
+                    </div>
+                </div>
+                <button class="btn btn-block btn-primary" type="submit" routerLink="/signin">{{ 'Sign In'}}</button>|
+                <a routerLink="/signin">{{
+                    'Already Registered ? Sign In directly'}}</a><br><br>
+
+            </form>
+        </div>
+    </div>
+</div>
